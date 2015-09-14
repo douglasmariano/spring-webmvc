@@ -73,7 +73,7 @@ public class PedidoDAO {
 		try{
 			List<Pedido> pedidos = new ArrayList<Pedido>();
 			PreparedStatement stmt = this.connection.prepareStatement
-			("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p order by datainicio");
+			("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p where extract(day from datainicio) = extract(day from current_date) order by datainicio");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())

@@ -87,20 +87,31 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-<div  class=container >
-	<table class="table table-condensed">
-
-		<th class="align-left">Id</th>
-		<th class="align-left">Nome</th>
-
+	
+	
+	
+<table  class="container-fluid" border="1" width="20%" >
+	
+		<thead>
+		<th class="col-md-4" >Id</th>
+		<th class="col-md-4">Nome</th> 
+		<th class="col-md-4">Media</th> 		
+		</thead>
+		
+		<tbody>
 		<c:forEach items="${separadores}" var="separador">
-			<tr id="separador_${separador.id}">
-				<td class="align-left">${separador.id}</td>
-				<td class="align-left">${separador.nome}</td>
+			<tr id="separador_${separador.id}"  >
+				<td  >${separador.id}</td>
+				<td  >${separador.nome}</td>
+				<td  >${separador.mediaSeparacao}</td>
 			</tr>
 		</c:forEach>
-	</table>
-</div>
+		</tbody>
+	
+</table>
+
+
+
 	<script type="text/javascript">
     function finalizaAgora(id) {    	
       $.post("finalizaPedido", {'id' : id}, function(time) {
@@ -114,12 +125,20 @@
 	<br />
 
 	<br />
-	<div class="container">
+	
+	<div class="panel-body"><div class="container">
 		<table id="tabelaPedidos" border="1" width="100%"
 			class="table table-condensed">
-			<thead>
+			<div class="panel panel-default">
+					<div class="panel-heading">	<script language=javascript type="text/javascript">
+dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho","agosto","setembro", "outubro", "novembro", "dezembro")
+now = new Date
+</script><script language=javascript type="text/javascript">document.write ("<h3> " + dayName[now.getDay() ] + ", " + now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  + now.getFullYear () + ". </h3>")
+</script>
+					</div><thead>
 				<tr>
-					<th>Id</th>
+		<!-- 			<th>Id</th> -->
 					<th>Pedido</th>
 					<th>Descricao</th>
 					<th>Separador</th>
@@ -136,7 +155,7 @@
 			<tbody>
 				<c:forEach items="${pedidos}" var="pedido">
 					<tr id="pedido_${pedido.id}">
-						<td>${pedido.id}</td>
+				<!-- 		<td>${pedido.id}</td> -->
 						<td>${pedido.numped}</td>
 						<td>${pedido.descricao}</td>
 						<td>${pedido.separador.nome}</td>
@@ -168,7 +187,18 @@
 				</c:forEach>
 
 			</tbody>
+			</div></div>
 		</table>
-	</div>
+		<script type="text/javascript">
+    function adicionaAjax() {
+        $.ajax({
+            url : 'novoPedido.html',
+            success : function(data) {
+                $('#adiciona').html(data);
+            }
+        });
+    }
+</script>
+	
 </body>
 </html>
