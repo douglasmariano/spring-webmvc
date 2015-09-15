@@ -87,7 +87,7 @@
 
 	<h3>Adicionar pedidos</h3>
 	
-	<form class="form-inline" role="form" action="adicionaPedido" method="POST">
+	<form class="form-inline" role="form" action="adicionaPedido"  method="POST">
 		
 		<input type="text" class="form-control" id="numped" name="numped" placeholder="Numero do Pedido">
 		

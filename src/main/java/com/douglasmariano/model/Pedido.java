@@ -43,6 +43,11 @@ public class Pedido {
 	
 	private Long mediaTempo;
 	
+	public enum quantidadeSeparado{
+		TOTAL,PARCIAL;
+	}
+		
+	
 		
 	public Long getId() {
 		return id;

@@ -50,7 +50,7 @@ public class SeparadorDAO {
 		try{
 			List<Separador> separador = new ArrayList<Separador>();
 			PreparedStatement stmt = this.connection.prepareStatement
-			("select s.id, s.nome,  sum(extract('epoch' from (p.datafinalizacao - p.datainicio)) ) mediaSeparacao from pedido p inner join separador s on s.id = p.separador_id group by s.id, s.nome");
+			("select s.id, s.nome,  sum(extract('epoch' from (p.datafinalizacao - p.datainicio)) ) mediaSeparacao from pedido p inner join separador s on s.id = p.separador_id  group by s.id, s.nome order by s.id, s.nome");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -75,7 +75,10 @@ public class SeparadorDAO {
 			}catch(SQLException e){
 				throw new RuntimeException(e);
 		}
+		
 	}
+	 
+	 	 
 	
 	public void remove(Separador separador){
 		try{

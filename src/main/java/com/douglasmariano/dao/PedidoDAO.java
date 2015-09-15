@@ -117,6 +117,7 @@ public class PedidoDAO {
 					
 					pedido.setDataInicio(dataInicio);
 				}
+				
 	
 			//adicionar objeto a lista
 				pedidos.add(pedido);
@@ -150,7 +151,7 @@ public class PedidoDAO {
 	public Pedido buscaPorId(Long id){
 		
 		try{
-			PreparedStatement stmt = this.connection.prepareStatement("select * from pedido");
+			PreparedStatement stmt = this.connection.prepareStatement("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p where extract(day from datainicio) = extract(day from current_date) order by datainicio");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -165,6 +166,12 @@ public class PedidoDAO {
 					pedido.setDescricao(rs.getString("descricao"));
 					pedido.setFinalizado(rs.getBoolean("finalizado"));
 				
+					rs.getObject("mediaTempo");
+					if(!rs.wasNull()) {
+						
+						pedido.setMediaTempo((long)rs.getDouble("mediaTempo"));
+					}
+					
 					rs.getLong("separador_id");
 					if (!rs.wasNull()) {
 						pedido.setSeparador(separadorDAO.buscaPorId(rs.getLong("separador_id")));
@@ -181,6 +188,13 @@ public class PedidoDAO {
 						dataFinalizacao.setTime(rs.getTimestamp("dataFinalizacao"));
 					
 						pedido.setDataFinalizacao(dataFinalizacao);
+					}
+					if(rs.getDate("dataInicio") != null) {
+						//montando data atraves do calendar
+						Calendar dataInicio = Calendar.getInstance();
+						dataInicio.setTime(rs.getTimestamp("dataInicio"));
+						
+						pedido.setDataInicio(dataInicio);
 					}
 					System.out.println("retornada pedido:"+pedido.getId());
 					return pedido;
