@@ -26,6 +26,7 @@ public class PedidoDAO {
 	private final Connection connection;
 	
 	public Calendar dataMedia;
+	public Integer Dia = 14;
 	
 	@Autowired
 	private SeparadorDAO separadorDAO;
@@ -73,7 +74,7 @@ public class PedidoDAO {
 		try{
 			List<Pedido> pedidos = new ArrayList<Pedido>();
 			PreparedStatement stmt = this.connection.prepareStatement
-			("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p where extract(day from datainicio) = extract(day from current_date) order by datainicio");
+			("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p where  TO_CHAR(p.datainicio, 'DD') in ('"+Dia+"') and	TO_CHAR(p.datainicio, 'MM') in ('09') and TO_CHAR(p.datainicio, 'YY') in ('15') order by datainicio");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())
@@ -151,7 +152,7 @@ public class PedidoDAO {
 	public Pedido buscaPorId(Long id){
 		
 		try{
-			PreparedStatement stmt = this.connection.prepareStatement("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p where extract(day from datainicio) = extract(day from current_date) order by datainicio");
+			PreparedStatement stmt = this.connection.prepareStatement("select p.*, extract('epoch' from case when datafinalizacao is null then '0' else (p.datafinalizacao -p.datainicio) end ) as mediaTempo from pedido p order by datainicio");
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next())

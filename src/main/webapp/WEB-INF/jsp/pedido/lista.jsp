@@ -47,7 +47,11 @@
 <script src="resources/template/stopwatch/libs/qunit/qunit.js"></script>
 <script src="resources/template/stopwatch/libs/blanket.min.js"></script>
 
-
+<script>
+        function activateDatePicker() {
+            $( "#datepicker" ).datepicker();
+        }
+    </script>
 
 
 </head>
@@ -116,7 +120,8 @@
 		</tbody>
 
 	</table>
-
+	
+    <input type="text" id="datepicker" onclick="activateDatePicker()">
 
 
 	<script type="text/javascript">
