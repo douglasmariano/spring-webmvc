@@ -83,10 +83,12 @@
     <h2>Página inicial da Lista de Pedidos</h2>
     <p>Bem vindo, ${usuarioLogado.usuario}</p> 
     <input type="button" name="button1" id="button1" value="Pedidos" onclick="parent.location.href='listaPedidos'"/>
+    
+    <input type="button" name="button2" id="button2" value="Pedidos Winthor" onclick="parent.location.href='listaPedidosWinthor'"/>
 
-   	<input type="button" name="button2" id="button2" value="Separadores" onclick="parent.location.href='listaSeparadores'"/>
+   	<input type="button" name="button3" id="button3" value="Separadores" onclick="parent.location.href='listaSeparadores'"/>
    	
-    <input type="button" name="button3" id="button2" value="Vendedores" onclick="parent.location.href='listaVendedores'"/>
+    <input type="button" name="button4" id="button4" value="Vendedores" onclick="parent.location.href='listaVendedores'"/>
     
   </body>
 </html>

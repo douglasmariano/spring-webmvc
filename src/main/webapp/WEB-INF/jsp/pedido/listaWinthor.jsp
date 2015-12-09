@@ -48,10 +48,10 @@
 <script src="resources/template/stopwatch/libs/blanket.min.js"></script>
 
 <script>
-        function activateDatePicker() {
-            $( "#datepicker" ).datepicker();
-        }
-    </script>
+	function activateDatePicker() {
+		$("#datepicker").datepicker();
+	}
+</script>
 
 
 </head>
@@ -101,43 +101,80 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	
 
-		</div>
-					<thead>
-						<tr>
-							<!-- 			<th>Id</th> -->
-							<th>Pedido</th>
-							<th>Cliente</th>
-							<th>Vendedor</th>
-							
-							<th>Data de Criacao</th>
-							<th>Posicao</th>
-							<th>Valor Total</th>
-							<th>Observação</th>
-							
 
-							<th></th>
-						</tr>
-					</thead>
+	<div class=container>
+		<table class="tabler-responsive">
 
-					<tbody>
-						<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">
-								<td>${pedidoWinthor.numped}</td>
-								<td>${pedidoWinthor.cliente}</td>
-								<td>${pedidoWinthor.posicao}</td>
-								<td>${pedidoWinthor.vendedor}</td>
-								<td>${pedidoWinthor.valor}</td>
-								<td>${pedidoWinthor.obs}</td>
-							
-							</tr>
-						</c:forEach>
+			<thead>
+				<tr>
+					<!-- 			<th>Id</th> -->
+					<th>Pedido</th>
+					<th>Cod. Cliente</th>
+					<th>Cliente</th>
+					<th>Cod. Vendedor</th>
+					<th>Vendedor</th>
+					<th>Data</th>
+					<th>Hora</th>
+					<th>Minuto</th>
+					<th>Posicao</th>
+					<th>Valor Total</th>
+					<th>Observação</th>
 
-					</tbody>
-				</div>
-				</div>
-			</table>
-			
+				</tr>
+			</thead>
+
+			<tbody>
+				<script>if (${pedidoWinthor.posicao} = F) {
+				    greeting = "
+				<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">
+
+					<tr>
+						
+						<td width=10%><button type="button" class="btn btn-primary btn-md">${pedidoWinthor.numped}</button></td> 
+						<td>${pedidoWinthor.codCliente}</td>
+						<td>${pedidoWinthor.cliente}</td>
+						<td>${pedidoWinthor.codVendedor}</td>
+						<td>${pedidoWinthor.vendedor}</td>
+						<td width=10%>${pedidoWinthor.data}</td>
+						<td>${pedidoWinthor.hora}:</td>
+						<td>${pedidoWinthor.minuto}</td>
+						<td>${pedidoWinthor.posicao}</td>
+						<td>${pedidoWinthor.valor}</td>
+						<td>${pedidoWinthor.observacao}</td>
+						
+					</tr>
+				</c:forEach>
+				";
+				}else { 
+					document.getElementById("demo").innerHTML = "<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">"
+
+					"<tr>"
+						
+						"<td width=10%>${pedidoWinthor.numped}</td> "
+					"	<td>${pedidoWinthor.codCliente}</td>"
+					"	<td>${pedidoWinthor.cliente}</td>"
+					"	<td>${pedidoWinthor.codVendedor}</td>"
+					"	<td>${pedidoWinthor.vendedor}</td>"
+					"	<td width=10%>${pedidoWinthor.data}</td>"
+					"	<td>${pedidoWinthor.hora}:</td>"
+					"	<td>${pedidoWinthor.minuto}</td>"
+					"	<td>${pedidoWinthor.posicao}</td>"
+					"	<td>${pedidoWinthor.valor}</td>"
+					"	<td>${pedidoWinthor.observacao}</td>"
+						
+					"</tr>"
+			"	</c:forEach>"
+					
+						
+						
+						);
+				}</script>
+			</tbody>
+
+
+		</table>
+	</div>
 
 </body>
 

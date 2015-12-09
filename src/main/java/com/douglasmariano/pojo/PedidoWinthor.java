@@ -1,20 +1,10 @@
 package com.douglasmariano.pojo;
 
-import java.time.LocalTime;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.douglasmariano.model.Separador;
-import com.douglasmariano.model.Vendedor;
 
 @Entity
 public class PedidoWinthor {
@@ -23,11 +13,11 @@ public class PedidoWinthor {
 	@GeneratedValue
 	private Long id;
 	
-	private Long numped;
+	private Integer numped;
 
 	private String cliente;
 	
-	private Calendar dataDeCriacao;
+	private Date data;
 			
 	private String vendedor;
 	
@@ -36,6 +26,26 @@ public class PedidoWinthor {
 	private String posicao;
 	
 	private String valor;
+	
+	private Integer codCliente;
+	
+	private Integer hora;
+	
+	private Integer minuto;
+	
+	private Integer codVendedor;
+	
+	private Integer peso;
+	
+	private Integer volume;
+	
+	private Integer numNota;
+	
+	private Integer numVias;
+	
+	private Date inicioPedido;
+	
+	private Date fimPedido;
 
 	public Long getId() {
 		return id;
@@ -45,11 +55,11 @@ public class PedidoWinthor {
 		this.id = id;
 	}
 
-	public Long getNumped() {
+	public Integer getNumped() {
 		return numped;
 	}
 
-	public void setNumped(Long numped) {
+	public void setNumped(Integer numped) {
 		this.numped = numped;
 	}
 
@@ -61,12 +71,12 @@ public class PedidoWinthor {
 		this.cliente = cliente;
 	}
 
-	public Calendar getDataDeCriacao() {
-		return dataDeCriacao;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDataDeCriacao(Calendar dataDeCriacao) {
-		this.dataDeCriacao = dataDeCriacao;
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 	public String getVendedor() {
@@ -100,6 +110,91 @@ public class PedidoWinthor {
 	public void setValor(String valor) {
 		this.valor = valor;
 	}
+
+	public Integer getCodCliente() {
+		return codCliente;
+	}
+
+	public void setCodCliente(Integer codCliente) {
+		this.codCliente = codCliente;
+	}
+
+	public Integer getHora() {
+		return hora;
+	}
+
+	public void setHora(Integer hora) {
+		this.hora = hora;
+	}
+
+	public Integer getMinuto() {
+		return minuto;
+	}
+
+	public void setMinuto(Integer minuto) {
+		this.minuto = minuto;
+	}
+
+
+
+	public Integer getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Integer peso) {
+		this.peso = peso;
+	}
+
+	public Integer getVolume() {
+		return volume;
+	}
+
+	public void setVolume(Integer volume) {
+		this.volume = volume;
+	}
+
+	public Integer getNumNota() {
+		return numNota;
+	}
+
+	public void setNumNota(Integer numNota) {
+		this.numNota = numNota;
+	}
+
+	public Date getInicioPedido() {
+		return inicioPedido;
+	}
+
+	public void setInicioPedido(Date inicioPedido) {
+		this.inicioPedido = inicioPedido;
+	}
+
+	public Date getFimPedido() {
+		return fimPedido;
+	}
+
+	public void setFimPedido(Date fimPedido) {
+		this.fimPedido = fimPedido;
+	}
+
+	public Integer getNumVias() {
+		return numVias;
+	}
+
+	public void setNumVias(Integer numVias) {
+		this.numVias = numVias;
+	}
+
+	public Integer getCodVendedor() {
+		return codVendedor;
+	}
+
+	public void setCodVendedor(Integer codVendedor) {
+		this.codVendedor = codVendedor;
+	}
+	
+	
+
 
 	
 	

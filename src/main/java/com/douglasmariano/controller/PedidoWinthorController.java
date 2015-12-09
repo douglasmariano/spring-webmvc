@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.douglasmariano.dao.ConectionWinthor;
-import com.douglasmariano.dao.PedidoDAO;
 
 @Controller
 public class PedidoWinthorController {
