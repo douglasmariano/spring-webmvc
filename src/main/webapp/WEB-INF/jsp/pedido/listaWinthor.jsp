@@ -102,80 +102,55 @@
 		<!-- /.container-fluid -->
 	</nav>
 
+<script type="text/javascript">${}</script>
+	<div class=container id="menu">
 
-	<div class=container>
-		<table class="tabler-responsive">
-
+		<table class=table>
 			<thead>
-				<tr>
-					<!-- 			<th>Id</th> -->
-					<th>Pedido</th>
-					<th>Cod. Cliente</th>
-					<th>Cliente</th>
-					<th>Cod. Vendedor</th>
-					<th>Vendedor</th>
-					<th>Data</th>
-					<th>Hora</th>
-					<th>Minuto</th>
-					<th>Posicao</th>
-					<th>Valor Total</th>
-					<th>Observação</th>
-
-				</tr>
+				<td>Pedido</td>
+				<td>Cod. Cliente</td>
+				<td>Cliente</td>
+				<td>Cod. Vendedor</td>
+				<td>Vendedor</td>
+				<td>Data</td>
+				<td>Hora</td>
+				<td>Minuto</td>
+				<td>Posicao</td>
+				<td>Valor Total</td>
+				<td>Observação</td>
 			</thead>
 
-			<tbody>
-				<script>if (${pedidoWinthor.posicao} = F) {
-				    greeting = "
-				<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">
 
-					<tr>
-						
-						<td width=10%><button type="button" class="btn btn-primary btn-md">${pedidoWinthor.numped}</button></td> 
-						<td>${pedidoWinthor.codCliente}</td>
-						<td>${pedidoWinthor.cliente}</td>
-						<td>${pedidoWinthor.codVendedor}</td>
-						<td>${pedidoWinthor.vendedor}</td>
-						<td width=10%>${pedidoWinthor.data}</td>
-						<td>${pedidoWinthor.hora}:</td>
-						<td>${pedidoWinthor.minuto}</td>
-						<td>${pedidoWinthor.posicao}</td>
-						<td>${pedidoWinthor.valor}</td>
-						<td>${pedidoWinthor.observacao}</td>
-						
-					</tr>
-				</c:forEach>
-				";
-				}else { 
-					document.getElementById("demo").innerHTML = "<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">"
+			<c:forEach items="${pedidosWinthor}" var="pedidoWinthor">
+				<tbody>
+					<td class="col-md-2">
+						<p class="text-right">${pedidoWinthor.numped}
+					</td>
+					<td class="col-md-1">${pedidoWinthor.codCliente}</td>
+					<td class="col-md-6">${pedidoWinthor.cliente}</td>
+					<td class="col-md-1">${pedidoWinthor.codVendedor}</td>
+					<td class="col-md-2">${pedidoWinthor.vendedor}</td>
+					<td class="col-md-2">${pedidoWinthor.data}</td>
+					<td class="col-md-1">
+						<p class="text-right">${pedidoWinthor.hora}:
+					</td>
+					<td class="col-md-1">
+						<p class="text-left">${pedidoWinthor.minuto}
+					</td>
+					<td class="col-md-1">${pedidoWinthor.posicao}</td>
+					<td class="col-md-1">${pedidoWinthor.valor}</td>
+					<td class="col-md-5">${pedidoWinthor.observacao}</td>
 
-					"<tr>"
-						
-						"<td width=10%>${pedidoWinthor.numped}</td> "
-					"	<td>${pedidoWinthor.codCliente}</td>"
-					"	<td>${pedidoWinthor.cliente}</td>"
-					"	<td>${pedidoWinthor.codVendedor}</td>"
-					"	<td>${pedidoWinthor.vendedor}</td>"
-					"	<td width=10%>${pedidoWinthor.data}</td>"
-					"	<td>${pedidoWinthor.hora}:</td>"
-					"	<td>${pedidoWinthor.minuto}</td>"
-					"	<td>${pedidoWinthor.posicao}</td>"
-					"	<td>${pedidoWinthor.valor}</td>"
-					"	<td>${pedidoWinthor.observacao}</td>"
-						
-					"</tr>"
-			"	</c:forEach>"
-					
-						
-						
-						);
-				}</script>
-			</tbody>
+				</tbody>
+			</c:forEach>
+
+
+
+
 
 
 		</table>
 	</div>
-
 </body>
 
 </html>

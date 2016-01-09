@@ -38,11 +38,13 @@ public class ConectionWinthor {
 		Calendar cal = Calendar.getInstance();
 
 		java.sql.Date sqlDate = new java.sql.Date(cal.getTimeInMillis());
+		
+		double somaGeralFaturador = 0;
 			
 		try{
 			List<PedidoWinthor> pedidosWinthor = new ArrayList<PedidoWinthor>();
 			PreparedStatement stmt = this.getConexao().prepareStatement
-			("SELECT   p.numped,p.data, p.vlatend, p.codcli,    c.cliente,p.codusur,u.nome, p.obs, p.totpeso,  p.totvolume,  p.numitens,   p.posicao,  p.hora, p.minuto,  p.numnota,  p.numviaspedido, p.dtiniciodigitacaopedido,  p.dtfimdigitacaopedido FROM   pcpedc p, pcusuari u,pcclient c WHERE p.codusur = u.codusur and  p.codcli = c.codcli and data = TO_DATE('"+sqlDate+"', 'yyyy/mm/dd') order by data,hora, minuto,posicao");
+					("SELECT   p.numped,p.data, p.vlatend, p.codcli,    c.cliente,p.codusur,u.nome, p.obs, p.totpeso,  p.totvolume,  p.numitens,   p.posicao,  p.hora, p.minuto,  p.numnota,  p.numviaspedido, p.dtiniciodigitacaopedido,  p.dtfimdigitacaopedido FROM   pcpedc p, pcusuari u,pcclient c WHERE p.codusur = u.codusur and  p.codcli = c.codcli and data = TO_DATE('"+sqlDate+"', 'yyyy/mm/dd') order by data,hora, minuto,posicao");
 			ResultSet rs = stmt.executeQuery();
 						while(rs.next())
 			{
@@ -67,6 +69,9 @@ public class ConectionWinthor {
 				pedidoWinthor.setFimPedido(rs.getDate("dtfimdigitacaopedido"));
 			//adicionar objeto a lista
 				pedidosWinthor.add(pedidoWinthor);
+				if (pedidoWinthor.getPosicao().equals('F'))
+					{somaGeralFaturador =  Double.parseDouble(pedidoWinthor.getValor()) +somaGeralFaturador;
+					}
 			}
 			rs.close();
 			stmt.close();
